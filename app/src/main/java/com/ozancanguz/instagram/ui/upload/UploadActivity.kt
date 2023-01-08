@@ -16,14 +16,25 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 
 import com.ozancanguz.instagram.databinding.ActivityUploadBinding
 import java.io.IOException
+import java.util.*
 
 class UploadActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityUploadBinding
 
+    private lateinit var auth:FirebaseAuth
+    private lateinit var storage:FirebaseStorage
+    private lateinit var firestore: FirebaseFirestore
 
     var selectedPicture : Uri? = null
     var selectedBitmap : Bitmap? = null
@@ -39,14 +50,39 @@ class UploadActivity : AppCompatActivity() {
         // register launcher init
         registerLauncher()
 
+        // init firebase variables
+        auth= Firebase.auth
+        storage=Firebase.storage
+        firestore=Firebase.firestore
+
 
 
         // select image fun
-        uploadImage()
+        loadImage()
+
+
+        // upload to firebase store
+        upload()
 
     }
 
-    private fun uploadImage() {
+    private fun upload() {
+        binding.uploadBtn.setOnClickListener {
+            var uuid= UUID.randomUUID()
+            var imageName="$uuid.jpg"
+            val reference=storage.reference
+            val imageReference=reference.child("images").child(imageName)
+            if(selectedPicture !=null){
+                imageReference.putFile(selectedPicture!!).addOnSuccessListener {
+
+                    // -> Download url save fire store
+
+                }
+            }
+        }
+    }
+
+    private fun loadImage() {
         binding.selectImage.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     this,
