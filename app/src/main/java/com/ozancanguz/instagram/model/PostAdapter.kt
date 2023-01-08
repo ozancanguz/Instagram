@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ozancanguz.instagram.R
+import com.ozancanguz.instagram.util.loadUrl
 import kotlinx.android.synthetic.main.item_row_layout.view.*
 
 class PostAdapter(var postList:ArrayList<Post>):RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
@@ -30,6 +31,7 @@ class PostAdapter(var postList:ArrayList<Post>):RecyclerView.Adapter<PostAdapter
         holder.itemView.userComment.text=currentPost.comment
 
         // glide image loading
+        holder.itemView.postImage.loadUrl(currentPost.downloadurl)
 
 
         holder.itemView.likeImage.setOnClickListener {
