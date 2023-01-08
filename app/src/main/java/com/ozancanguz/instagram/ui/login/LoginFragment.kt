@@ -35,9 +35,21 @@ class LoginFragment : Fragment() {
         auth = Firebase.auth
 
 
+        // login
         signIn()
 
+        // navigate to register screen
+        signUp()
+
+
         return view
+    }
+
+    private fun signUp() {
+        binding.signUpTextview.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+
     }
 
     private fun signIn() {
