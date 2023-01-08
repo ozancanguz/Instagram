@@ -35,11 +35,21 @@ class LoginFragment : Fragment() {
         auth = Firebase.auth
 
 
+
+
         // login
         signIn()
 
         // navigate to register screen
         signUp()
+
+        // current user
+        val currentUser=auth.currentUser
+        if(currentUser!=null){
+            findNavController().navigate(R.id.action_loginFragment_to_feedFragment)
+        }
+
+
 
 
         return view
