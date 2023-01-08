@@ -76,6 +76,27 @@ class UploadActivity : AppCompatActivity() {
                 imageReference.putFile(selectedPicture!!).addOnSuccessListener {
 
                     // -> Download url save fire store
+                    var uploadPicReference=reference.child("images").child(imageName)
+
+                    uploadPicReference.downloadUrl.addOnSuccessListener {
+                        val downloadUrl=it.toString()
+                        if(auth.currentUser!=null) {
+                            val postMap = hashMapOf<String, Any>()
+                            postMap.put("downloadUrl", downloadUrl)
+                            postMap.put("e-mail", auth.currentUser!!.email!!)
+                            postMap.put("comment", binding.commentEditText.text.toString())
+                            postMap.put("date", com.google.firebase.Timestamp.now())
+
+                            firestore.collection("Posts").add(postMap).addOnSuccessListener {
+                                finish()
+                            }
+
+
+                        }
+                    }
+
+
+
 
                 }
             }
