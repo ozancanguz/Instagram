@@ -87,6 +87,7 @@ class UploadActivity : AppCompatActivity() {
                             postMap.put("comment", binding.commentEditText.text.toString())
                             postMap.put("date", com.google.firebase.Timestamp.now())
 
+
                             firestore.collection("Posts").add(postMap).addOnSuccessListener {
                                 finish()
                             }
