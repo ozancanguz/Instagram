@@ -23,7 +23,11 @@
         android:id="@+id/registerFragment"
         android:name="com.ozancanguz.instagram.ui.register.RegisterFragment"
         android:label="Register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+    </fragment>
     <activity
         android:id="@+id/uploadActivity"
         android:name="com.ozancanguz.instagram.ui.upload.UploadActivity"

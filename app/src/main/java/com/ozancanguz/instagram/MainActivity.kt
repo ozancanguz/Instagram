@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        bottomNavigationView.setupWithNavController(navController)
+
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
     override fun onSupportNavigateUp(): Boolean {

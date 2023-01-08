@@ -24,10 +24,6 @@ class LoginFragment : Fragment() {
 
 
 
-        binding.button.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_feedFragment)
-        }
-
         return view
     }
 
