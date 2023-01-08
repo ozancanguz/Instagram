@@ -6,6 +6,7 @@ import com.ozancanguz.instagram.R
 import com.ozancanguz.instagram.databinding.ActivityUploadBinding
 
 class UploadActivity : AppCompatActivity() {
+
     private lateinit var binding:ActivityUploadBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,6 +15,13 @@ class UploadActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
+
+        uploadImage()
+
+    }
+
+    private fun uploadImage() {
 
 
     }
