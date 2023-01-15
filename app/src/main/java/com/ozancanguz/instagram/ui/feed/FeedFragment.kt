@@ -6,9 +6,11 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -16,6 +18,7 @@ import com.google.firebase.storage.ktx.storage
 import com.ozancanguz.instagram.R
 import com.ozancanguz.instagram.databinding.FragmentFeedBinding
 import com.ozancanguz.instagram.model.Post
+import com.ozancanguz.instagram.model.PostAdapter
 
 
 class FeedFragment : Fragment() {
@@ -29,6 +32,7 @@ class FeedFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
 
     private lateinit var postsArrayList:ArrayList<Post>
+    private lateinit var postListAdapter:PostAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,11 +55,19 @@ class FeedFragment : Fragment() {
         // get all data from firebase firestore
         getDataFromFirebaseDb()
 
+        // set up rv
+         setupRv()
+
         return view
+    }
+    private fun setupRv() {
+        binding.recyclerView.layoutManager=LinearLayoutManager(requireContext())
+        postListAdapter= PostAdapter(postsArrayList)
+        binding.recyclerView.adapter=postListAdapter
     }
 
     private fun getDataFromFirebaseDb() {
-        db.collection("Posts").addSnapshotListener { value, error ->
+        db.collection("Posts").orderBy("date", Query.Direction.DESCENDING).addSnapshotListener { value, error ->
 
             if(error !=null){
                 Toast.makeText(requireContext(),error.localizedMessage, Toast.LENGTH_LONG).show()
@@ -74,6 +86,7 @@ class FeedFragment : Fragment() {
                             postsArrayList.add(post)
 
                         }
+                        postListAdapter.notifyDataSetChanged()
                     }
                 }
             }

@@ -6,12 +6,12 @@
         android:id="@+id/addPost"
         app:showAsAction="ifRoom"
         android:title="Add Post"
-        android:icon="@drawable/addpost" />
+        android:icon="@drawable/wow" />
     <item
         android:id="@+id/signout"
         app:showAsAction="ifRoom"
         android:title="SignOut"
-        android:icon="@drawable/signout2" />
+        android:icon="@drawable/out" />
 
 
 </menu>

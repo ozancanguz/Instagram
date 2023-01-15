@@ -3,59 +3,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="408dp"
-    android:layout_height="300dp">
+    android:layout_height="400dp">
 
     <ImageView
-        android:id="@+id/postImage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/postImage2"
+        android:layout_width="403dp"
+        android:layout_height="220dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368"
+        app:layout_constraintVertical_bias="0.363"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/userEmailTv"
+        android:id="@+id/userEmailTv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
         android:text="TextView"
         android:textColor="@color/red"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/postImage2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/userComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chandler Bing"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postImage"
-        app:layout_constraintVertical_bias="0.344" />
+        app:layout_constraintTop_toBottomOf="@+id/postImage2"
+        app:layout_constraintVertical_bias="0.496" />
 
     <ImageView
-        android:id="@+id/likeImage"
-        android:layout_width="68dp"
-        android:layout_height="42dp"
+        android:id="@+id/likeImage2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/likeCounttv"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toEndOf="@+id/userComment"
-        app:srcCompat="@drawable/favinactive"
-        tools:layout_editor_absoluteY="227dp" />
+        app:layout_constraintTop_toTopOf="@+id/userComment"
+        app:srcCompat="@drawable/favinactive" />
 
     <TextView
         android:id="@+id/likeCounttv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="0"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.287"
-        app:layout_constraintStart_toEndOf="@+id/likeImage"
-        tools:layout_editor_absoluteY="241dp" />
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toEndOf="@+id/likeImage2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

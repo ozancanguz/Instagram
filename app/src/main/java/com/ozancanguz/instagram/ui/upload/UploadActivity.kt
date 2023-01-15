@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -106,6 +107,7 @@ class UploadActivity : AppCompatActivity() {
 
     private fun loadImage() {
         binding.selectImage.setOnClickListener {
+
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.READ_EXTERNAL_STORAGE
@@ -116,6 +118,7 @@ class UploadActivity : AppCompatActivity() {
                         Manifest.permission.READ_EXTERNAL_STORAGE
                     )
                 ) {
+
 
                 } else {
                     permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
