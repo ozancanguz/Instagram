@@ -1,3 +1,12 @@
 # Instagram
 
-I am building a instagram clone app. It is on working process
+**Tools that I used** :
+
+- Navigation Component
+- Firebase Authentication
+- Firebase Cloud Storage
+- Firebase Firestore Database
+- View Binding
+- Glide for image loading
+- LottieAnimationView
+
